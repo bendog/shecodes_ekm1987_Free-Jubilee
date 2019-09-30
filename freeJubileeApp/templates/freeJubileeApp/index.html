@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <button type="submit" href="{% url 'freeJubileeApp:newEvent' %}" value="Create" class="btn btn-primary" id="new-event">+ Create New Jubilee</button>
+    <a href="{% url 'freeJubileeApp:newEvent' %}" ><button type="submit" value="Create" class="btn btn-primary" id="new-event">+ Create New Jubilee</button></a>
 
     <h2>Welcome {{ user.get_full_name }} <small>{{ user.username }}</small>!</h2>
     
