@@ -13,5 +13,5 @@ class AccountView(generic.DetailView):
 
 class Register(generic.CreateView):
     form_class = CustomUserCreationForm
-    success_url = reverse_lazy("signup")
-    template_name = "register.html"
+    success_url = reverse_lazy("freeJubileeApp:index")
+    template_name = "registration/register.html"

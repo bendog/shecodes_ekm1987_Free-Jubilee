@@ -6,7 +6,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, Row, Column, Field
 
 
-class CustomUserCreationForm(forms.Form):
+class CustomUserCreationForm(forms.ModelForm):
     first_name = forms.CharField(max_length=30, required=True)
     last_name = forms.CharField(max_length=30, required=True)
     email = forms.EmailField(
