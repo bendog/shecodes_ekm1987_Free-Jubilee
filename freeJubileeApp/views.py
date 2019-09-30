@@ -47,7 +47,7 @@ class AddEventView(generic.CreateView):
     form_class = EventForm
     context_object_name = "eventform"
     template_name = "freeJubileeApp/createEvent.html"
-    success_url = reverse_lazy("freeJubileeProject:index")
+    success_url = reverse_lazy("freeJubileeApp:index")
     # we have to use reverse_lazy so that urls.py can load our class
     # and not get stuck in a recursive loop
 
