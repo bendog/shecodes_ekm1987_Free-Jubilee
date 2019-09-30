@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 
 class FreejubileeappConfig(AppConfig):
-    name = 'freeJubileeApp'
+    name = "freeJubileeApp"

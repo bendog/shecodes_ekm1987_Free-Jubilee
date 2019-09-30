@@ -16,51 +16,49 @@ from .forms import EventForm
 from .tokens import account_activation_token
 
 
-
-
 class IndexView(generic.ListView):
-    template_name = 'freeJubileeApp/index.html'
-    context_object_name = 'events_list'
+    template_name = "freeJubileeApp/index.html"
+    context_object_name = "events_list"
 
     def get_queryset(self):
-        '''Return the events.'''
+        """Return the events."""
         return Event.objects.all()
 
     def get_object(self, **kwargs):
-        return get_object_or_404(
-            self.model.objects.select_related()
-        )
+        return get_object_or_404(self.model.objects.select_related())
 
     def get_context_data(self, **kwargs):  # WIP
         context = super().get_context_data(**kwargs)
-        for index,event in enumerate(self.object_list):
-            context[index] = [
-                event.categories.all()[:3]
-            ]
+        for index, event in enumerate(self.object_list):
+            context[index] = [event.categories.all()[:3]]
         # for i in context:
         #     print(context[i])
         return context
 
+
 class EventView(generic.DetailView):
     model = Event
-    template_name = 'freeJubileeApp/event.html'
+    template_name = "freeJubileeApp/event.html"
+
 
 class AddEventView(generic.CreateView):
-    # using the create view we can just give it the variables 
+    # using the create view we can just give it the variables
     # as the functionaity is already built in!
     form_class = EventForm
-    context_object_name = 'eventform'
-    template_name = 'freeJubileeApp/createEvent.html'
-    success_url = reverse_lazy('freeJubileeProject:index')
+    context_object_name = "eventform"
+    template_name = "freeJubileeApp/createEvent.html"
+    success_url = reverse_lazy("freeJubileeProject:index")
     # we have to use reverse_lazy so that urls.py can load our class
-    # and not get stuck in a recursive loop 
+    # and not get stuck in a recursive loop
 
     def form_valid(self, form):
         form.instance.host = self.request.user
         return super().form_valid(form)
 
+
 def account(request):
-    return render(request, 'users/account.html')
+    return render(request, "users/account.html")
+
 
 def signup(request):
-    return render(request, 'users/signup.html')
+    return render(request, "users/signup.html")

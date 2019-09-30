@@ -21,18 +21,19 @@ from freeJubileeApp import viewsets, views
 from users import views
 from rest_framework.authtoken import views
 from users import viewsets as UserViewsets
+
 admin.autodiscover()
 
 
 router = routers.DefaultRouter()
-router.register(r'events', viewsets.EventViewSet)
-router.register(r'users', UserViewsets.CustomUserViewSet)
+router.register(r"events", viewsets.EventViewSet)
+router.register(r"users", UserViewsets.CustomUserViewSet)
 
 urlpatterns = [
-    path('free-jubilee/', include('freeJubileeApp.urls'), name='freeJubileeApp'),
-    path('users/', include('users.urls'), name='users'),
-    path('users/', include('django.contrib.auth.urls')),
-    path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
-    path(r'api-auth-token/', views.obtain_auth_token),
+    path("free-jubilee/", include("freeJubileeApp.urls"), name="freeJubileeApp"),
+    path("users/", include("users.urls"), name="users"),
+    path("users/", include("django.contrib.auth.urls")),
+    path("admin/", admin.site.urls),
+    path("api/", include(router.urls)),
+    path(r"api-auth-token/", views.obtain_auth_token),
 ]

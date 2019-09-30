@@ -8,4 +8,4 @@ from crispy_forms.layout import Layout, Div, Submit, Row, Column, Field
 class EventForm(ModelForm):
     class Meta:
         model = Event
-        fields = ['title', 'location', 'start_time', 'end_time']
+        fields = ["title", "location", "start_time", "end_time"]
